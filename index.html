@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+            transition: background-color 5s ease-in-out;
+        }
+
+        .animated-div {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-100%, -100%);
+            width: 100px;
+            /* Adjust as needed */
+            height: 100px;
+            /* Adjust as needed */
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* Three equal columns */
+            grid-template-rows: repeat(2, 1fr);
+            /* Three equal columns */
+            gap: 10px;
+            height: 100vh;
+        }
+
+        .item {
+            border: 1px solid rgb(241, 241, 241);
+            background-color: rgb(241, 241, 241);
+            height: 100%;
+        }
+
+        .item-1 {
+            grid-column: span 1;
+            grid-row: 1;
+            background-color: rgb(0, 0, 0);
+        }
+
+        .item-2 {
+            grid-column: span 1;
+            grid-row: span 1;
+            background-color: rgb(95, 167, 167);
+        }
+
+        .item-3 {
+            grid-column: span 1;
+            grid-row: span 1;
+            background-color: rgb(255, 255, 255);
+        }
+
+        .item-4 {
+            grid-column: span 1;
+            grid-row: span 1;
+            background-color: rgb(175, 215, 213);
+        }
+
+        .fixed-element {
+            display: block;
+            position: fixed;
+            /* This makes the element fixed-positioned */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(0, 0, 0);
+            color: white;
+            padding: 10px;
+            font-size: 20px
+        }
+
+        @media (max-width: 799px) {
+            .item-1 {
+                display: none;
+            }
+
+            .item-2 {
+                display: none;
+            }
+
+            .item-3 {
+                display: none;
+            }
+
+            .item-4 {
+                display: none;
+            }
+
+            .animated-div {
+                display: none;
+            }
+
+            body {
+                animation: body-color 4s infinite alternate;
+            }
+
+            @keyframes body-color {
+                0% {
+                    background-color: white;
+                }
+
+                100% {
+                    background-color: rgb(175, 215, 213);
+                }
+            }
+        }
+
+        @media (min-width: 800px) and (max-width: 999px) {
+            .fixed-element {
+                display: none;
+            }
+
+            .animated-div {
+                display: none;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                /* One column */
+                grid-template-rows: repeat(12, 1fr);
+            }
+
+            .item-1 {
+                grid-column: span 1;
+                grid-row: span 5;
+            }
+
+            .item-2 {
+                grid-column: span 1;
+                grid-row: span 3;
+            }
+
+            .item-3 {
+                grid-column: span 1;
+                grid-row: span 1;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .item-4 {
+                grid-column: span 1;
+                grid-row: span 3;
+            }
+
+            body {
+                background-color: (241, 241, 241);
+            }
+        }
+
+        @media (min-width: 1000px) and (max-width: 1199px) {
+            .animation-container {
+                width: 100%;
+                height: 100%;
+                border: 50px solid transparent;
+                border-radius: 50%;
+                animation: bounce 2s infinite ease-in-out;
+                background-color: white;
+            }
+
+            .fixed-element {
+                display: none;
+            }
+
+            .item-1 {
+                display: none;
+            }
+
+            .item-2 {
+                display: none;
+            }
+
+            .item-3 {
+                display: none;
+            }
+
+            .item-4 {
+                display: none;
+            }
+
+            body {
+                background: rgb(95, 167, 167);
+            }
+
+            @keyframes bounce {
+
+                0%,
+                100% {
+                    transform: translateY(0);
+                    border-radius: 50%;
+                }
+
+                50% {
+                    transform: translateY(-30px);
+                    border-radius: 0%;
+                }
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .fixed-element {
+                display: none;
+            }
+
+            .animation-container {
+                width: 100%;
+                height: 100%;
+                border: 50px solid transparent;
+                background-color: black;
+                animation: flip 3s infinite linear, color 10s infinite alternate;
+                background-color: black;
+            }
+
+            body {
+                background: black;
+            }
+
+            @keyframes color {
+                0% {
+                    background-color: white;
+                }
+
+                50% {
+                    background-color: black;
+                }
+
+                100% {
+                    background-color: rgb(95, 167, 167);
+                }
+            }
+
+            @keyframes flip {
+                0% {
+                    transform: rotateY(0);
+                }
+
+                100% {
+                    transform: rotateY(360deg);
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="animated-div">
+        <div class="animation-container"></div>
+    </div>
+    <div class="fixed-element">
+        HELLO
+    </div>
+    <div class="container">
+        <div class="item item-1"></div>
+        <div class="item item-2"></div>
+        <div class="item item-3"></div>
+        <div class="item item-4"></div>
+    </div>
+</body>
+
+</html>
